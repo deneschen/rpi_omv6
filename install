@@ -251,7 +251,7 @@ if [[ ! "${omvInstall}" == "ii" ]]; then
 
   echo "Adding openmediavault repo and key..."
   echo "deb ${omvRepo} ${omvCodename} main" > ${omvSources}
-  wget -O "${omvKey}" ${omvRepo}/archive.key
+  tsocks wget -O "${omvKey}" ${omvRepo}/archive.key
   apt-key add "${omvKey}"
 
   echo "Updating repos..."
@@ -309,10 +309,11 @@ fi
 echo "Downloading omv-extras.org plugin for openmediavault ${version}.x ..."
 file="openmediavault-omvextrasorg_latest_all${version}.deb"
 
-if [ -f "${file}" ]; then
-  rm ${file}
-fi
-wget ${url}/${file}
+#if [ -f "${file}" ]; then
+#  rm ${file}
+#fi
+#tsocks wget ${url}/${file}
+set -x
 if [ -f "${file}" ]; then
   if ! dpkg --install ${file}; then
     echo "Installing other dependencies ..."

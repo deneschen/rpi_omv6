@@ -1,0 +1,7 @@
+[http]
+	proxy = "socks5://10.0.0.8:1080"
+[https]
+	proxy = "socks5://10.0.0.8:1080"
+[user]
+	email = you@example.com
+	name = Your Name
